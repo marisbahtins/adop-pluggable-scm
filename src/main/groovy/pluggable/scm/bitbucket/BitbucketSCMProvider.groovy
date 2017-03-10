@@ -147,7 +147,10 @@ public class BitbucketSCMProvider implements SCMProvider {
             break;
           }
 
-          String repoName = repo.substring(repo.lastIndexOf("/") + 1, repo.indexOf(".git"));
+          String repoName = repo.substring(repo.lastIndexOf("/") + 1, repo.length());
+          if (repoName.contains(".git")){
+            repoName = repoName.replaceAll(".git", "")
+          }
           String target_repo_name = repoNamespace + "/" + repoName
           int repo_exists=0;
 
