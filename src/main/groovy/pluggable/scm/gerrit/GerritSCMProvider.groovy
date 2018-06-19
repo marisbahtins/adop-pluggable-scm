@@ -244,6 +244,26 @@ public class GerritSCMProvider implements SCMProvider {
         }
     }
 
+   /**
+    *  Return a closure representation of the SCM section for multibranch pipelines.
+    *  @param projectName - name of the project.
+    *  @param repoName  - name of the repository to checkout.
+    *  @param credentialId - name of the credential in the Jenkins credential
+    *          manager to use.
+    *  @param extras - extra closures to add to the multibranch SCM section.
+    *  @return a closure representation of the SCM providers multibranch SCM section.
+    **/
+    @Override
+    public Closure getMultibranch(String projectName, String repoName, String credentialId, Closure extras) {
+       if(extras == null) extras = {}
+        return {
+            git extras >> {
+                remote(this.getScmUrl() + projectName + "/" + repoName + ".git" )
+                credentialsId(credentialId)
+            }
+        }
+    }
+
     /**
     * Return a closure representation of the SCM providers trigger SCM section.
     *
