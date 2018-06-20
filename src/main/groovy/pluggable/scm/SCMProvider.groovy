@@ -21,6 +21,18 @@ public interface SCMProvider {
     public Closure get(String projectName, String repoName, String branchName, String credentialId, Closure extras);
 
     /**
+    *  Return a closure representation of the SCM section for multibranch pipelines.
+    *
+    *  @param projectName - name of the project.
+    *  @param repoName  - name of the repository to checkout.
+    *  @param credentialId - name of the credential in the Jenkins credential
+    *          manager to use.
+    *  @param extras - extra closures to add to the multibranch SCM section.
+    *  @return a closure representation of the SCM providers multibranch SCM section.
+    **/
+    public Closure getMultibranch(String projectName, String repoName, String credentialId, Closure extras);
+
+    /**
     * Return a closure representation of the SCM providers trigger SCM section.
     *
     * @param projectName - name of the project.
@@ -38,5 +50,4 @@ public interface SCMProvider {
     * @param overwriteRepos Whether the contents of your created repositories are over-written or not
     **/
     public void createScmRepos(String workspace, String repoNamespace, String codeReviewEnabled, String overwriteRepos)
-    
 }
