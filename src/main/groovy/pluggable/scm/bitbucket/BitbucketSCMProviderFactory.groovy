@@ -12,7 +12,7 @@ import pluggable.scm.SCMProviderInfo;
 public class BitbucketSCMProviderFactory implements SCMProviderFactory {
 
   /**
-  * A factory method which return an SCM Provider instantiated with the
+  * A factory method which returns an SCM Provider instantiated with the
   * the provided properties.
   *
   * @param scmProviderProperties - properties for the SCM provider.
