@@ -1,0 +1,5 @@
+loader.id=adop-gitlab
+gitlab.endpoint=gitlab
+gitlab.port=80
+gitlab.protocol=http
+gitlab.context=gitlab

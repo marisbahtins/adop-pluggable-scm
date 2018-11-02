@@ -1,0 +1,8 @@
+scm.loader.id=adop-gitlab
+scm.id=adop-gitlab-http 
+scm.type=gitlab 
+scm.protocol=http 
+scm.port=80 
+scm.host=gitlab 
+scm.context=gitlab 
+scm.url=http://gitlab/gitlab/ 
