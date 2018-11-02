@@ -82,5 +82,5 @@ After all the steps, the **Load_Cartridge** job should look something like this 
 
 More info:
 
-- [About Pluggable SCM](https://kristapsm.github.io/adop-pluggable-scm/docs/about-pluggable-scm/)
-- [Adding a Pluggable SCM](https://kristapsm.github.io/adop-cartridges-cookbook/docs/recipes/adding-a-pluggable-scm/)
+- [About Pluggable SCM](https://accenture.github.io/adop-pluggable-scm/docs/about-pluggable-scm/)
+- [Adding a Pluggable SCM](https://accenture.github.io/adop-cartridges-cookbook/docs/recipes/adding-a-pluggable-scm/)
