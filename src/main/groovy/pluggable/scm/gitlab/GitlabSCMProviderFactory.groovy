@@ -10,7 +10,7 @@ class GitlabSCMProviderFactory implements SCMProviderFactory {
     /**
      * A factory method which return an SCM Provider instantiated with the
      * the provided properties.
-     * @param scmProviderProperties - properties for the SCM provider.
+     * @param scmProviderProperties  properties for the SCM provider.
      * @return SCMProvider configured from the provided SCM properties.
      */
     public SCMProvider create(Properties scmProviderProperties) {
@@ -34,8 +34,8 @@ class GitlabSCMProviderFactory implements SCMProviderFactory {
 
     /**
      * Verify that a value is neither null or empty
-     * @param key
-     * @param value
+     * @param key the key of the key-value pair
+     * @param value the value of the key-value pair
      * @return nothing
      * @throw IllegalArgumentException
      */
