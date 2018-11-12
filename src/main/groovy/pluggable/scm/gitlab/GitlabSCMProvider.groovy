@@ -53,11 +53,11 @@ class GitlabSCMProvider implements SCMProvider {
     /**
      * Method which returns GitLab repository clone urls for http/https/ssh
      * @return SCM url for the provider.
-     *     e.g. Gitlab-SSH  ssh://git@10.0.0.0:22/myproject/
-     *          Gitlab-HTTP-with-context http://10.0.0.0:80/gitlab/myproject/
-     *          Gitlab-HTTP-without-context http://10.0.0.0:80/myproject/
-     *          Gitlab-HTTPS-with-context https://10.0.0.0:443/gitlab/myproject/
-     *          Gitlab-HTTPS-without-context https://10.0.0.0:443/myproject/
+     *     e.g. Gitlab-SSH  ssh://git@10.0.1.35:22/myproject/
+     *          Gitlab-HTTP-with-context http://10.0.1.35:80/gitlab/myproject/
+     *          Gitlab-HTTP-without-context http://10.0.1.35:80/myproject/
+     *          Gitlab-HTTPS-with-context https://domain:443/gitlab/myproject/
+     *          Gitlab-HTTPS-without-context https://domain:443/myproject/
      *
      * @throws IllegalArgumentException if the SCM protocol type is not supported.
      * */
@@ -220,11 +220,11 @@ class GitlabSCMProvider implements SCMProvider {
      * Given a list of repositories from urls.txt and a list of repositories which exist under a group,
      * this method forks each repository in urls.txt to GitLab if it does not exist.
      * If it does exist, it overwrites it if overwriteRepos in Jenkins was set to true
-     * @param repos A list of public repositories to fork
+     * @param repos a list of public repositories to fork
      * @param existingProjectsInGroup A list of all the repositories that already exist in a given GitLab namespace
-     * @param groupNamespaceId The id of the group which is needed for API requests on that group
-     * @param workspace The current workspace
-     * @param namespace The GitLab group namespace
+     * @param groupNamespaceId the id of the group which is needed for API requests on that group
+     * @param workspace the current workspace
+     * @param namespace the GitLab group namespace
      * @param overwriteRepos true if the box overwriteRepos in Jenkins was ticked, false otherwise
      * @return nothing
      */
@@ -284,7 +284,7 @@ class GitlabSCMProvider implements SCMProvider {
      * @param repoName the repository name
      * @param existingProjectsInGroup list of existing repositories in that group - used to get the ID of
      * the repository to be deleted
-     * @param groupNamespaceId The id of the group which is used when recreating the repository in that group
+     * @param groupNamespaceId the id of the group which is used when recreating the repository in that group
      * @return nothing
      */
     private void deleteAndRecreateRepository(String repoName, List existingProjectsInGroup, int groupNamespaceId) {
@@ -365,7 +365,7 @@ class GitlabSCMProvider implements SCMProvider {
      * Extracts the repository name from an HTTP git repository url
      * e.g for https://github.com/Accenture/adop-cartridge-java-environment-template.git return adop-cartridge-java-environment-template
      * Gerrit repository names will not be extracted from Gerrit urls unless  a substring /gerrit/, http(s)/gerrit or .gerrit. exists
-     * @param git clone repository url
+     * @param url git clone repository url
      * @return repository name
      */
     private String extractRepoNameFromUrl(String url) {
@@ -391,7 +391,7 @@ class GitlabSCMProvider implements SCMProvider {
 
     /**
      * Given a list of repositories, this method validates each of them by calling the validate method
-     * @param A list of repositories to validate
+     * @param repos a list of repositories to validate
      * @return Nothing
      * @throws IllegalArgumentException if the repositories list is empty
      */
@@ -406,7 +406,7 @@ class GitlabSCMProvider implements SCMProvider {
 
     /**
      * Validates a repository clone URL by checking  the protocol against the GitLabSCM protocol enum (SSH is not allowed at the moment)
-     * @param Repository name
+     * @param repo repository name
      * @throws IllegalArgumentException if a a repository is invalid
      */
     private void validateRepo(String repo) {
@@ -428,8 +428,8 @@ class GitlabSCMProvider implements SCMProvider {
 
     /**
      * Given a list of repository names and a target repository name, it checks that the list contains the target repository name
-     * @param List of Repositories
-     * @param the repository name to be searched for in the list
+     * @param listOfRepos list of Repositories
+     * @param targetRepoName the repository name to be searched for in the list
      * @return true if the repository exists, false otherwise
      */
     private boolean repositoryAlreadyExistsInGroup(List listOfRepos, String targetRepoName) {
@@ -439,8 +439,8 @@ class GitlabSCMProvider implements SCMProvider {
 
     /**
      * Given a list of repository objects parsed from JSON it looks for a repository with a particular name and if it finds it, it extracts its id
-     * @param List of Repository objects
-     * @param the repository name to be searched for in the list
+     * @param listOfExistingRepos list of Repository objects
+     * @param targetRepoName the repository name to be searched for in the list
      * @return id of the target repository
      * @throws IllegalArgumentException if the target repository is not in the list
      * @throws Exception if the target repository is found but an id cannot be extracted
@@ -478,7 +478,7 @@ class GitlabSCMProvider implements SCMProvider {
      * Validates the  response of an HTTP request to search for a group.
      * Makes sure that only one group was returned
      * @param response a list of JSON objects after parsing the response to the REST request
-     * @param namespace The group namespace (common namespace for a collection of repositories e.g /namespace/repo1, /namespace/repo2
+     * @param namespace the group namespace (common namespace for a collection of repositories e.g /namespace/repo1, /namespace/repo2
      * @throws Exception if more than one group or no groups were found
      */
     private String validateResponseToGetGroupRequest(List response, String namespace){
