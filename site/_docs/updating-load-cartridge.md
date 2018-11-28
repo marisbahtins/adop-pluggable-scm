@@ -25,52 +25,46 @@ _Note: Please use your own values, below are just examples!_
 
 * Get onto the ADOP/C host and add the following files in the respective locations on the Jenkins volume (you have to create all directories manually)
 
-  - /var/jenkins_home/userContent/datastore/pluggable/scm/CartridgeLoader/adop-gerrit-1.loader.props
+  - /var/jenkins_home/userContent/datastore/pluggable/scm/CartridgeLoader/adop-gitlab.props
 
   ```
-  loader.id=adop-gerrit-1
-  gerrit.endpoint=gerrit
-  gerrit.user=jenkins
-  gerrit.port=29418
-  gerrit.protocol=ssh
-  gerrit.permissions.path=${PROJECT_NAME}/permissions
-  gerrit.permissions.with_review.path=${PROJECT_NAME}/permissions-with-review
+  loader.id=adop-gitlab-1
+  gitlab.endpoint=gitlab
+  gitlab.user=jenkins
+  gitlab.port=29418
+  gitlab.protocol=ssh
+  gitlab.context=gitlab
   ```
-  - /var/jenkins_home/userContent/datastore/pluggable/scm/ScmProviders/adop-gerrit-1.ssh.props
+  - /var/jenkins_home/userContent/datastore/pluggable/scm/ScmProviders/adop-gitlab.ssh.props
 
   ```
-  scm.loader.id=adop-gerrit-1
-  scm.id=adop-gerrit-ssh
-  scm.type=gerrit
+  scm.loader.id=adop-gitlab-1
+  scm.id=adop-gitlab-ssh
+  scm.type=gitlab
   scm.code_review.enabled=true
   scm.protocol=ssh
   scm.port=29418
   scm.host=10.0.0.1
-  scm.url=http://<IP>/gerrit/
-
-  scm.gerrit.server.profile=ADOP Gerrit
-  scm.gerrit.ssh.clone.user=jenkins
+  scm.url=http://gitlab/gitlab/
   ```
-  - /var/jenkins_home/userContent/datastore/pluggable/scm/ScmProviders/adop-gerrit-1.http.props
+  - /var/jenkins_home/userContent/datastore/pluggable/scm/ScmProviders/adop-gitlab.http.props
 
   ```
-  scm.loader.id=adop-gerrit-1
-  scm.id=adop-gerrit-http
-  scm.type=gerrit
-  scm.code_review.enabled=true
+  scm.loader.id=adop-gitlab-1
+  scm.id=adop-gitlab-http
+  scm.type=gitlab
   scm.protocol=http
-  scm.port=8080
+  scm.port=80
   scm.host=10.0.0.1
-  scm.url=http://<IP>/gerrit/
-
-  scm.gerrit.server.profile=ADOP Gerrit
+  scm.context=gitlab
+  scm.url=http://gitlab/gitlab/
   ```
 
 * Add the following Environment Variables in _Manage Jenkins -> Configure System -> Global Properties_
   - PLUGGABLE_SCM_PROVIDER_PROPERTIES_PATH="/var/jenkins_home/userContent/datastore/pluggable/scm"
   - PLUGGABLE_SCM_PROVIDER_PATH="/var/jenkins_home/userContent/job_dsl_additional_classpath/"
 * Install the _Active Choices_ plugin from _Manage Jenkins_ (You will probably need to restart Jenkins)
-* Add your Jenkins private key (used to connect to Gerrit) as a secret file type credential with the ID *adop-jenkins-private*. This can be done in _Credentials_ section.
+* Add your Jenkins private key (used to connect to Gitlab) as a secret file type credential with the ID *adop-jenkins-private*. This can be done in _Credentials_ section.
 * Create a new Workspace and a new project (which should also have a new parameter), and you should have a new **Load_Cartridge** job ready to go! 
   - _Note:_ If there is nothing in drop-down menu, go in to Configure Job and just save it.
 

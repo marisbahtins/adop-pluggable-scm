@@ -4,7 +4,7 @@ title: About Pluggable SCM Library
 permalink: /docs/about-pluggable-scm/
 ---
 
-In brief, Pluggable SCM allows user to use his own desired SCM provider, currently _BitBucket_ and _Gerrit_ are supported.
+In brief, Pluggable SCM allows user to use his own desired SCM provider, currently _BitBucket_ , _Gitlab_ and _Gerrit_ are supported.
 
 By enabling a standard interface, Java reflection can be used to return dynamic groovy closures in cartridge which would act the same as default DSL methods depending on the SCM provider.
 
@@ -28,7 +28,7 @@ More specific information can be found in [Javadocs](https://accenture.github.io
 To use this library you will need to create your own classes which then would implement above interfaces. For example
 
 ```
-  public class GerritSCMProviderFactory implements SCMProviderFactory {}
+  public class GitlabSCMProviderFactory implements SCMProviderFactory {}
 ```
 
 Then use the factory method to return the instantiated SCM provider with the provided properties 
@@ -37,7 +37,7 @@ Then use the factory method to return the instantiated SCM provider with the pro
   public SCMProvider create(Properties scmProviderProperties) {}
 ```
 
-from where your _GerritSCMProvider_ will read properties like :
+from where your _GitlabSCMProvider_ will read properties like :
 
 * Host
 * Port
@@ -49,7 +49,7 @@ from where your _GerritSCMProvider_ will read properties like :
 The same way it should be done for example using _SCMProvider_ interface
 
 ```
-  public class GerritSCMProvider implements SCMProvider {}
+  public class GitlabSCMProvider implements SCMProvider {}
 ```
 
 and proceed with defining your own classes for creating repositories etc. and defining _get_ and _trigger_ closures.
