@@ -70,7 +70,7 @@ _Note: Please use your own values, below are just examples!_
 
 After all the steps, the **Load_Cartridge** job should look something like this -
 
-![Updated Load Cartridge job](/pluggable-scm-library/images/docs/updated-load-cartridge.JPG)
+![Updated Load Cartridge job](/adop-pluggable-scm/images/docs/updated-load-cartridge.JPG)
 
 ---
 
