@@ -4,7 +4,7 @@ title: About Pluggable SCM Library
 permalink: /docs/about-pluggable-scm/
 ---
 
-In brief, Pluggable SCM allows user to use his own desired SCM provider, currently _BitBucket_ , _Gitlab_ and _Gerrit_ are supported.
+In brief, Pluggable SCM allows user to use their own desired SCM provider, currently _BitBucket_ , _Gitlab_ and _Gerrit_ are supported.
 
 By enabling a standard interface, Java reflection can be used to return dynamic groovy closures in cartridge which would act the same as default DSL methods depending on the SCM provider.
 
