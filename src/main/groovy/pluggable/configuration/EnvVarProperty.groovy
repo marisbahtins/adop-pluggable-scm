@@ -55,11 +55,11 @@ public class EnvVarProperty {
   */
   public String getPluggablePath(){
 
-      String property = this.getProperty("PLUGGABLE_SCM_PROVIDER_PATH")
+      String property = this.getProperty("PLUGGABLE_SCM_PROVIDER_PATH_1")
 
       if(!this.checkDirectoryExists(property)){
         throw new IllegalArgumentException(
-          "Invalid environment variable - PLUGGABLE_SCM_PROVIDER_PATH must be a valid directory.");
+          "Invalid environment variable - PLUGGABLE_SCM_PROVIDER_PATH_1 must be a valid directory.");
       }
 
       return property;
